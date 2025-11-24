@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>tiny-chaos</title>
+  <link rel="stylesheet" href="./src/style.css">
+
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">✨ Tiny Chaos</div>
+
+      <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Why Tho?</a>
+        <a href="#cta">Get Started</a>
+      </nav>
+
+      <button id="moodToggle" class="pill-btn">Good Vibes</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Welcome to your new favorite one-page template.</p>
+          <h1>Minimal effort. Maximum main-character energy.</h1>
+          <p class="hero-text">
+            A basic layout with just enough personality to look intentional,
+            but not enough responsibility to feel like a full-time job.
+          </p>
+
+          <div class="hero-actions">
+            <button id="quipBtn" class="primary-btn">Make Me Laugh</button>
+            <span id="quipOutput" class="quip-output">
+              Click the button. Do it. You know you want to.
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <div class="hero-badge">100% JavaScript-free…*until it’s not*</div>
+          <div class="hero-widget">
+            <p class="widget-title">Today’s vibe:</p>
+            <p id="vibeLabel" class="widget-body">“Trying my best (kinda)”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container narrow">
+        <h2>What is this?</h2>
+        <p>
+          This is a tiny starter template for when you <em>know</em> you should
+          make something simple, but your brain keeps trying to architect a
+          full SaaS platform with dark mode, user auth, and seventeen modals.
+        </p>
+        <p>
+          Instead: one page, a few sections, a sprinkle of JavaScript, and
+          enough structure that you can plug in your own content without
+          fighting the CSS.
+        </p>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section alt">
+      <div class="container">
+        <h2>Why you might actually use this</h2>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>🧱 Stupidly simple</h3>
+            <p>
+              One HTML file, one CSS file, one JS file. No bundlers, no build
+              step, no 900MB node_modules folder silently judging you.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>🎭 Built-in personality</h3>
+            <p>
+              Fun microcopy, playful hover states, and a tiny mood system to
+              remind you this is supposed to be enjoyable, not existential.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>🛠 Easy to reskin</h3>
+            <p>
+              Swap the colors, change the font, rename everything, claim you
+              coded it at 3AM in a single sitting. I support you.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="section cta">
+      <div class="container narrow cta-inner">
+        <h2>Ready to turn this into something dangerously impressive?</h2>
+        <p>
+          Replace this text with your own offer, product, portfolio link,
+          newsletter, or completely unhinged passion project.
+        </p>
+
+        <form class="cta-form" onsubmit="return false;">
+          <label for="email">Drop your email (or a fake one, I won’t know).</label>
+          <div class="cta-form-row">
+            <input type="email" id="email" placeholder="you@probablydotcom.com" autocomplete="email" />
+            <button class="primary-btn" id="fakeSubmit">Do the Thing</button>
+          </div>
+          <p id="ctaMessage" class="cta-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Made with ✨ mild chaos ✨ and vanilla JS.</span>
+      <span class="footer-small">You can absolutely steal this. Please do.</span>
+    </div>
+  </footer>
+
+  <script src="./src/script.js"></script>
+</body>
+
+
+</html>

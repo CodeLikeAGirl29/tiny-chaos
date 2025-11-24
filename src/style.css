@@ -1,0 +1,438 @@
+/* ================================
+   Basic one-page fun template
+   ================================ */
+
+/* --- CSS Variables --- */
+:root {
+  --bg: #050816;
+  --bg-alt: #070b1a;
+  --card: rgba(255, 255, 255, 0.04);
+  --accent: #ffb347;
+  --accent-soft: rgba(255, 179, 71, 0.12);
+  --text-main: #f9fafb;
+  --text-muted: #a5b4fc;
+  --border-subtle: rgba(148, 163, 184, 0.35);
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+/* --- Reset-ish --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: radial-gradient(circle at top, #1e293b 0, #020617 52%);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+/* --- Layout helpers --- */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  padding-inline: 1.5rem;
+  margin-inline: auto;
+}
+
+.narrow {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* --- Header --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(16px);
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 6, 23, 0.95),
+    rgba(2, 6, 23, 0.75),
+    transparent
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.75rem;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.nav a {
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+}
+
+.nav a:hover {
+  color: var(--text-main);
+  border-color: rgba(148, 163, 184, 0.5);
+  background-color: rgba(15, 23, 42, 0.7);
+}
+
+/* --- Buttons --- */
+.primary-btn,
+.pill-btn {
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  padding: 0.55rem 1.3rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease,
+    border-color 0.15s ease, color 0.15s ease;
+}
+
+.primary-btn {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #1f2933;
+  box-shadow: 0 14px 30px rgba(255, 179, 71, 0.35);
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(255, 179, 71, 0.45);
+}
+
+.pill-btn {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: rgba(148, 163, 184, 0.45);
+  color: var(--text-muted);
+}
+
+.pill-btn:hover {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Sections general --- */
+.section {
+  padding-block: 4rem;
+}
+
+.section.alt {
+  background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+  border-block: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* --- Hero --- */
+.hero {
+  padding-top: 5.5rem;
+  padding-bottom: 4rem;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.1rem, 3vw, 2.7rem);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.hero-text {
+  margin-top: 0.5rem;
+  max-width: 32rem;
+}
+
+.eyebrow {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.hero-actions {
+  margin-top: 1.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.quip-output {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Hero card on the right */
+.hero-card {
+  background: radial-gradient(circle at top, #111827 0, #020617 60%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 1.3rem 1.4rem;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top, rgba(255, 179, 71, 0.2), transparent 60%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.hero-card > * {
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(252, 211, 77, 0.7);
+  background: rgba(15, 23, 42, 0.9);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fef9c3;
+}
+
+.hero-widget {
+  margin-top: 1.4rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.widget-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.widget-body {
+  font-size: 0.95rem;
+}
+
+/* --- Features --- */
+.feature-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+}
+
+.feature-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: radial-gradient(circle at top left, #111827 0, #020617 70%);
+  padding: 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.feature-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+/* --- CTA --- */
+.cta {
+  background: radial-gradient(circle at top, #0b1120 0, #020617 60%);
+  border-top: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.cta-inner {
+  text-align: center;
+}
+
+.cta-inner h2 {
+  font-size: 1.7rem;
+}
+
+.cta-inner p {
+  margin-top: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.cta-form {
+  text-align: left;
+  margin-top: 1.2rem;
+}
+
+.cta-form label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.cta-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cta-form input {
+  flex: 1 1 220px;
+  min-width: 0;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 0.9rem;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.cta-form input::placeholder {
+  color: rgba(148, 163, 184, 0.7);
+}
+
+.cta-message {
+  font-size: 0.85rem;
+  margin-top: 0.65rem;
+  color: var(--accent);
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  padding-block: 1.5rem;
+  background: #020617;
+}
+
+.footer-inner {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-small {
+  opacity: 0.8;
+}
+
+/* --- Mood state (body class) --- */
+body[data-mood="chill"] {
+  --accent: #7dd3fc;
+  --accent-soft: rgba(125, 211, 252, 0.14);
+}
+
+body[data-mood="chaotic"] {
+  --accent: #fb7185;
+  --accent-soft: rgba(251, 113, 133, 0.17);
+}
+
+body[data-mood="productive"] {
+  --accent: #a3e635;
+  --accent-soft: rgba(163, 230, 53, 0.15);
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-card {
+    order: -1;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .nav {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    padding-top: 4.5rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cta-form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary-btn,
+  .pill-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
