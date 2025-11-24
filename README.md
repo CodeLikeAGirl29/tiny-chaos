@@ -1,6 +1,3 @@
-Here you gooo 🎉 — drop this in `README.md` at the root of your repo:
-
-````markdown
 # Tiny Chaos – Fun One-Page Starter
 
 A stupidly simple, slightly chaotic one-page template built with **HTML**, **CSS**, and **vanilla JavaScript**.
