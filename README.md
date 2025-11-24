@@ -2,6 +2,8 @@
 
 A stupidly simple, slightly chaotic one-page template built with **HTML**, **CSS**, and **vanilla JavaScript**.
 
+![img](https://res.cloudinary.com/codelikeagirl29/image/upload/v1763957482/tiny-chaos-11-23-2025_10_05_PM_cqzggu.png)
+
 It’s perfect for:
 
 - quick landing pages  
