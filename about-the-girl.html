@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>About · tiny-chaos</title>
+  <link rel="stylesheet" href="./src/about-style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">✨ Tiny Chaos</div>
+      <nav class="nav">
+        <a href="index.html#hero">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#features">Why Tho?</a>
+        <a href="index.html#cta">Get Started</a>
+      </nav>
+      <button id="moodToggle" class="pill-btn">Good Vibes</button>
+    </div>
+  </header>
+
+  <main>
+    <article class="about-card">
+
+      <span class="eyebrow">The girl behind the chaos</span>
+      <h1>Hi, I'm Ainsley & I'm an ISTP-A.</h1>
+      <p>
+        The "Virtuoso," Assertive variant: independent, hands-on, and more
+        interested in figuring things out than talking about figuring things
+        out. Naturally, that's also the entire design philosophy of this site.
+      </p>
+
+      <div class="featured-illustration">
+        <img src="./assets/undraw_meditation_k4oa.png" alt="Illustration of a person meditating, calm and grounded">
+      </div>
+
+      <h2>So what does ISTP-A actually mean?</h2>
+      <p>
+        ISTP stands for Introverted, Observant, Thinking, and Prospecting.
+        It's a type that tends to chase its own goals without needing much
+        outside validation, poking at the world with curiosity, a bit of
+        skepticism, and a genuine love of figuring out how things work by
+        taking them apart.
+      </p>
+      <aside>
+        <p><strong>Practical over polished.</strong> Straight for the fix
+          instead of the overengineered solution — learning by doing beats
+          reading the manual front to back.</p>
+      </aside>
+      <p>
+        ISTPs also tend to work best solo, at their own pace, without a lot
+        of interruptions — and regular socializing can feel more draining
+        than energizing, so they gravitate toward a few meaningful
+        connections over constant small talk.
+      </p>
+      <p>
+        The <strong>-A</strong> (Assertive) part adds a layer of calm
+        confidence: steady under pressure, not too rattled by stress or by
+        what other people think. Put it all together and you get someone
+        who's direct but reserved, generally even-keeled but capable of
+        sudden bursts of energy when a new interest grabs them — which,
+        again, tracks. This whole repo is called <em>tiny chaos</em> for a
+        reason.
+      </p>
+
+      <div class="dotmap"></div>
+
+      <h2>The strengths</h2>
+      <ul class="trait-list">
+        <li><strong>🔧 Hands-on</strong>Always elbow-deep in some project, turning observations into working solutions.
+        </li>
+        <li><strong>💡 Resourceful</strong>Ideas come easily when there's something practical to build.</li>
+        <li><strong>⚡ Spontaneous</strong>Comfortable going with the flow, saving the energy for when it counts.</li>
+        <li><strong>🗣️ Direct</strong>Says what it means without dressing it up, for better or worse.</li>
+        <li><strong>🦎 Independent</strong>Best problem-solving happens alone, on my own terms.</li>
+        <li><strong>🌱 Grounded</strong>Focused on right now, not spiraling into hypotheticals.</li>
+      </ul>
+
+      <div class="planet">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <h2>The quirks (aka growth edges)</h2>
+      <ul class="trait-list">
+        <li><strong>🙅 Unapologetic</strong>Can shift direction with little warning and even less explanation.</li>
+        <li><strong>🧊 Logic over feelings</strong>Defaults to reasoning things out — empathy doesn't always land right.
+        </li>
+        <li><strong>🔒 Private</strong>Notoriously hard to get to know. Silence over small talk, most days.</li>
+        <li><strong>🎯 Easily bored</strong>Great at tinkering with something new, less reliable once it's "just
+          maintenance."</li>
+        <li><strong>🧭 Fiercely independent</strong>Someone else's schedule imposed on me doesn't sit well for long.
+        </li>
+        <li><strong>🤨 Skeptical</strong>Likes proof — which can mean being slow to buy into what can't be quantified.
+        </li>
+      </ul>
+
+      <div class="skyline"></div>
+
+      <div class="about-closer">
+        <p>That's the whole profile. Mildly chaotic, somehow shipping it anyway.</p>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    Made with ✨ mild chaos ✨ and vanilla JS.
+  </footer>
+
+  <script>
+    function hoverFollow(target) {
+      if (!target) return;
+      target.addEventListener('mousemove', (event) => {
+        const rect = target.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        target.style.setProperty('--x', `${y}px`);
+        target.style.setProperty('--y', `${x}px`);
+      });
+    }
+    hoverFollow(document.querySelector('.dotmap'));
+  </script>
+  <script src="./src/script.js"></script>
+</body>
+
+</html>

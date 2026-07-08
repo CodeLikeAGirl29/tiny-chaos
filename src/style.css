@@ -1,438 +1,491 @@
-/* ================================
-   Basic one-page fun template
-   ================================ */
-
-/* --- CSS Variables --- */
+/* --- Core Reset & Layout Variables --- */
 :root {
-  --bg: #050816;
-  --bg-alt: #070b1a;
-  --card: rgba(255, 255, 255, 0.04);
-  --accent: #ffb347;
-  --accent-soft: rgba(255, 179, 71, 0.12);
-  --text-main: #f9fafb;
-  --text-muted: #a5b4fc;
-  --border-subtle: rgba(148, 163, 184, 0.35);
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.6);
-  --radius-lg: 16px;
-  --radius-pill: 999px;
-  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --bg: #050508;
+  --bg-alt: #0c0d14;
+  --card: rgba(18, 20, 32, 0.6);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* --- Reset-ish --- */
-*,
-*::before,
-*::after {
+/* --- Hostile State Token Configurations --- */
+body[data-mood="mild"] {
+  --accent: #f97316;
+  /* Toxic Alert Orange */
+  --accent-soft: rgba(249, 115, 22, 0.15);
+}
+
+body[data-mood="savage"] {
+  --accent: #dc2626;
+  /* Deep Blood Crimson */
+  --accent-soft: rgba(220, 38, 38, 0.18);
+}
+
+body[data-mood="nuclear"] {
+  --accent: #facc15;
+  /* Hazardous Radiation Yellow */
+  --accent-soft: rgba(250, 204, 21, 0.15);
+}
+
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-body);
-  background: radial-gradient(circle at top, #1e293b 0, #020617 52%);
+  background-color: var(--bg);
   color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-}
-
-/* --- Layout helpers --- */
 .container {
-  width: 100%;
   max-width: 1100px;
-  padding-inline: 1.5rem;
-  margin-inline: auto;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.narrow {
-  max-width: 720px;
-  margin-inline: auto;
+.container.narrow {
+  max-width: 680px;
 }
 
-/* --- Header --- */
+/* --- Layout Components --- */
 .site-header {
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(5, 5, 8, 0.8);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
-  z-index: 20;
-  backdrop-filter: blur(16px);
-  background: linear-gradient(
-    to bottom,
-    rgba(2, 6, 23, 0.95),
-    rgba(2, 6, 23, 0.75),
-    transparent
-  );
-  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  z-index: 100;
 }
 
 .header-inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding-block: 0.75rem;
-  gap: 1.5rem;
+  align-items: center;
+  height: 4.5rem;
 }
 
 .logo {
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: var(--accent);
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
 }
 
 .nav {
   display: flex;
-  gap: 1rem;
-  font-size: 0.9rem;
+  gap: 1.5rem;
 }
 
 .nav a {
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
   color: var(--text-muted);
-  border: 1px solid transparent;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
 }
 
 .nav a:hover {
   color: var(--text-main);
-  border-color: rgba(148, 163, 184, 0.5);
-  background-color: rgba(15, 23, 42, 0.7);
 }
 
-/* --- Buttons --- */
-.primary-btn,
-.pill-btn {
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  padding: 0.55rem 1.3rem;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  cursor: pointer;
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease,
-    border-color 0.15s ease, color 0.15s ease;
-}
-
+/* --- Action Element Tokens --- */
 .primary-btn {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #1f2933;
-  box-shadow: 0 14px 30px rgba(255, 179, 71, 0.35);
+  background: var(--text-main);
+  color: var(--bg);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  transition: transform 0.1s;
 }
 
-.primary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 40px rgba(255, 179, 71, 0.45);
+.primary-btn:active {
+  transform: scale(0.98);
 }
 
 .pill-btn {
-  background: rgba(15, 23, 42, 0.7);
-  border-color: rgba(148, 163, 184, 0.45);
-  color: var(--text-muted);
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .pill-btn:hover {
-  background: rgba(15, 23, 42, 0.95);
   border-color: var(--accent);
-  color: var(--accent);
+  background: var(--accent-soft);
 }
 
-/* --- Sections general --- */
+/* --- Section Architectures --- */
 .section {
-  padding-block: 4rem;
+  padding: 6rem 0;
 }
 
 .section.alt {
-  background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
-  border-block: 1px solid rgba(148, 163, 184, 0.2);
+  background: var(--bg-alt);
 }
 
-.section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
+h2 {
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
 }
 
-.section p {
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* --- Hero --- */
-.hero {
-  padding-top: 5.5rem;
-  padding-bottom: 4rem;
-}
-
+/* --- Hero Frame Glassmorphism Area --- */
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
-  gap: 2.5rem;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
   align-items: center;
-}
-
-.hero-copy h1 {
-  font-size: clamp(2.1rem, 3vw, 2.7rem);
-  line-height: 1.2;
-  margin-bottom: 0.8rem;
-}
-
-.hero-text {
-  margin-top: 0.5rem;
-  max-width: 32rem;
 }
 
 .eyebrow {
-  letter-spacing: 0.2em;
+  font-weight: 600;
   text-transform: uppercase;
   font-size: 0.75rem;
-  color: var(--accent);
-  margin-bottom: 0.4rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.hero-copy h1 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-actions {
-  margin-top: 1.7rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 1.25rem;
+  align-items: flex-start;
 }
 
 .quip-output {
-  font-size: 0.85rem;
   color: var(--text-muted);
+  font-size: 0.95rem;
+  min-height: 3rem;
 }
 
-/* Hero card on the right */
 .hero-card {
-  background: radial-gradient(circle at top, #111827 0, #020617 60%);
-  border-radius: var(--radius-lg);
+  background: var(--card);
   border: 1px solid var(--border-subtle);
-  padding: 1.3rem 1.4rem;
-  box-shadow: var(--shadow-soft);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(circle at top, rgba(255, 179, 71, 0.2), transparent 60%);
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-.hero-card > * {
-  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.25rem 0.7rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(252, 211, 77, 0.7);
-  background: rgba(15, 23, 42, 0.9);
+  display: inline-block;
   font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #fef9c3;
-}
-
-.hero-widget {
-  margin-top: 1.4rem;
-  padding: 1rem;
-  border-radius: 12px;
-  background: rgba(15, 23, 42, 0.92);
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  font-family: monospace;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--text-muted);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
 }
 
 .widget-title {
   font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
   color: var(--text-muted);
-  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
 .widget-body {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.5;
 }
 
-/* --- Features --- */
+/* --- Feature Grid Space --- */
 .feature-grid {
-  margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .feature-card {
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  padding: 2rem;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: radial-gradient(circle at top left, #111827 0, #020617 70%);
-  padding: 1.4rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
 }
 
 .feature-card h3 {
-  font-size: 1rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
 }
 
-/* --- CTA --- */
-.cta {
-  background: radial-gradient(circle at top, #0b1120 0, #020617 60%);
-  border-top: 1px solid rgba(148, 163, 184, 0.35);
+.feature-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
+/* --- CTA Email Section Form Area --- */
 .cta-inner {
   text-align: center;
 }
 
-.cta-inner h2 {
-  font-size: 1.7rem;
-}
-
 .cta-inner p {
-  margin-top: 0.5rem;
-  margin-bottom: 1.8rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
 }
 
 .cta-form {
-  text-align: left;
-  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .cta-form label {
-  display: block;
   font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 0.6rem;
 }
 
 .cta-form-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 450px;
 }
 
-.cta-form input {
-  flex: 1 1 220px;
-  min-width: 0;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  border-radius: var(--radius-pill);
-  padding: 0.55rem 0.9rem;
+.cta-form input[type="email"] {
+  flex: 1;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
   color: var(--text-main);
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
 }
 
-.cta-form input::placeholder {
-  color: rgba(148, 163, 184, 0.7);
+.cta-form input[type="email"]:focus {
+  outline: 1px solid var(--accent);
 }
 
 .cta-message {
-  font-size: 0.85rem;
-  margin-top: 0.65rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
   color: var(--accent);
+  min-height: 1.5rem;
 }
 
-/* --- Footer --- */
+/* --- Footer Elements --- */
 .site-footer {
-  border-top: 1px solid rgba(148, 163, 184, 0.3);
-  padding-block: 1.5rem;
-  background: #020617;
+  border-top: 1px solid var(--border-subtle);
+  padding: 3rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 
 .footer-inner {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-muted);
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  justify-content: space-between;
 }
 
 .footer-small {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
-/* --- Mood state (body class) --- */
-body[data-mood="chill"] {
-  --accent: #7dd3fc;
-  --accent-soft: rgba(125, 211, 252, 0.14);
+/* --- Dynamic Personality Element Rules --- */
+.quiz-step-label {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 4px;
 }
 
-body[data-mood="chaotic"] {
-  --accent: #fb7185;
-  --accent-soft: rgba(251, 113, 133, 0.17);
+.quiz-question-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
-body[data-mood="productive"] {
-  --accent: #a3e635;
-  --accent-soft: rgba(163, 230, 53, 0.15);
+.identity-type-highlight {
+  font-size: 1.75rem;
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-top: 4px;
 }
 
-/* --- Responsive --- */
-@media (max-width: 900px) {
+.quiz-opt-btn {
+  width: 100%;
+  text-align: left;
+  background: var(--bg-alt);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quiz-opt-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateX(4px);
+}
+
+.quiz-opt-btn:active {
+  transform: translateX(2px) scale(0.99);
+}
+
+/* --- Gothic Anime Mascot Container & Elements --- */
+/* --- UPDATED: High-Contrast Gothic Anime Mascot --- */
+.mascot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 1.5rem 0.5rem;
+  position: relative;
+}
+
+.goth-cat {
+  width: 64px;
+  height: 54px;
+  background: #161b33;
+  /* Lifted from pitch black to a rich gothic midnight slate */
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  /* Crisper, high-contrast outline */
+  border-radius: 32px 32px 20px 20px;
+  position: relative;
+  /* Added a subtle external glow using the active mood variable */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px var(--accent-soft);
+  transition: all 0.3s ease;
+}
+
+.cat-ears::before,
+.cat-ears::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.cat-ears::before {
+  left: 6px;
+  border-width: 0 14px 16px 0;
+  border-color: transparent transparent #161b33 transparent;
+  /* Matches new base */
+  filter: drop-shadow(-1.5px -1.5px 0px rgba(255, 255, 255, 0.25));
+}
+
+.cat-ears::after {
+  right: 6px;
+  border-width: 0 0 16px 14px;
+  border-color: transparent transparent #161b33 transparent;
+  /* Matches new base */
+  filter: drop-shadow(1.5px 1.5px 0px rgba(255, 255, 255, 0.25));
+}
+
+.cat-eyes {
+  display: flex;
+  justify-content: space-between;
+  width: 38px;
+  position: absolute;
+  top: 20px;
+  left: 13px;
+}
+
+.eye {
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+  animation: catBlink 4s infinite ease-in-out;
+}
+
+.cat-mouth {
+  width: 8px;
+  height: 4px;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  /* Made the pouty mouth easier to see */
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  position: absolute;
+  bottom: 14px;
+  left: 28px;
+}
+
+.goth-collar {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0c0d14;
+  color: var(--accent);
+  font-size: 10px;
+  line-height: 1;
+  padding: 1px 4px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: monospace;
+}
+
+@keyframes catBlink {
+
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* --- Responsive Layout Breaks --- */
+@media (max-width: 768px) {
   .hero-inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero-card {
-    order: -1;
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
   .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px) {
-  .header-inner {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    grid-template-columns: 1fr;
   }
 
-  .nav {
-    order: 2;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+  .hero-copy h1 {
+    font-size: 2rem;
   }
 
-  .hero {
-    padding-top: 4.5rem;
-  }
-
-  .feature-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .cta-form-row {
+  .footer-inner {
     flex-direction: column;
-    align-items: stretch;
-  }
-
-  .primary-btn,
-  .pill-btn {
-    width: 100%;
-    justify-content: center;
+    gap: 1rem;
     text-align: center;
   }
 }
