@@ -160,12 +160,12 @@ main {
 /* featured illustration */
 .featured-illustration {
   width: 100%;
-  padding: 24px 0 8px;
+  padding: 20px 0 8px;
   text-align: center;
 }
 
 .featured-illustration img {
-  max-width: 320px;
+  max-width: 300px;
   width: 100%;
   height: auto;
 }
